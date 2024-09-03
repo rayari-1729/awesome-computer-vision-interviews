@@ -1,2 +1,9 @@
-# awesome-computer-vision-interviews
-A comprehensive guide to Computer Vision interview questions and answers. This repository covers fundamental and advanced concepts, key components of CV systems, and practical solutions to help you prepare for technical interviews in the field of Computer Vision.
+# Computer Vision Interview Questions and Answers
+
+Welcome to the **Computer Vision Interview Questions and Answers** repository! This collection aims to provide fundamental and advanced computer vision questions along with their solutions to help you prepare for technical interviews or improve your understanding of computer vision concepts.
+
+### Table of Contents
+
+1. [Introduction](#introduction)
+2. [Questions and Answers](#questions-and-answers)
+3. [Acknowledgments](#acknowledgments)
