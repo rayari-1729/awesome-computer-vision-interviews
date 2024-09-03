@@ -7,3 +7,19 @@ Welcome to the **Computer Vision Interview Questions and Answers** repository! T
 1. [Introduction](#introduction)
 2. [Questions and Answers](#questions-and-answers)
 3. [Acknowledgments](#acknowledgments)
+
+
+
+
+
+
+
+
+
+
+
+...
+
+## Acknowledgments
+
+This repository leverages knowledge from various open-source resources, including textbooks, online courses, and research papers. Special thanks to the contributors and the open-source community for their invaluable resources.
