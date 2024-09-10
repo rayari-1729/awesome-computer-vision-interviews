@@ -289,6 +289,44 @@ plt.show()
 ```
 <br>
 
+## 4. What is Non-Maximum Suppression (NMS) and Intersection over Union (IoU)?
+
+### Non-Maximum Suppression (NMS)
+
+Non-Maximum Suppression (NMS) is a technique used in object detection to eliminate redundant bounding boxes around the same object. When an object detection model identifies an object, it often generates multiple bounding boxes with different confidence scores. NMS helps in retaining only the most accurate bounding box by suppressing the others.
+
+#### How NMS Works:
+
+1. **Score Thresholding:** Filter out all bounding boxes with confidence scores below a predefined threshold.
+2. **Sort by Confidence:** Sort the remaining bounding boxes by their confidence scores in descending order.
+3. **Select the Highest Score Box:** Select the bounding box with the highest confidence score.
+4. **Compute IoU:** Compute the Intersection over Union (IoU) of the selected box with the remaining boxes.
+5. **Remove Overlapping Boxes:** Remove boxes that have an IoU above a certain threshold with the selected box.
+6. **Repeat:** Repeat the process until no more boxes remain.
+
+NMS ensures that the final bounding boxes are accurate and do not overlap significantly, retaining only the best bounding box for each object.
+
+### Intersection over Union (IoU)
+
+Intersection over Union (IoU) is a metric used to measure the overlap between two bounding boxes, which is crucial for evaluating the accuracy of object detection models.
+
+$\text{IoU} = \frac{\text{Area of Overlap}}{\text{Area of Union}} $
+
+- **Area of Overlap:** The area where the predicted bounding box overlaps with the ground truth bounding box.
+- **Area of Union:** The total area covered by both the predicted and ground truth bounding boxes.
+
+#### IoU Values:
+
+- **0:** No overlap between the two bounding boxes.
+- **1:** Perfect overlap between the predicted and ground truth bounding boxes.
+- A typical IoU threshold (e.g., 0.5) is used to determine if a detection is a true positive (IoU >= threshold) or a false positive (IoU < threshold).
+
+### Summary
+
+- **Non-Maximum Suppression (NMS):** A technique used in object detection to remove redundant bounding boxes and retain the most accurate ones.
+- **Intersection over Union (IoU):** A metric to measure the overlap between two bounding boxes, helping to evaluate the performance of object detection models.
+
+
 
 
 
