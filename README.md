@@ -179,6 +179,116 @@ if __name__ == "__main__":
 
 ```
 
+## 3. How does _edge detection_ work in image analysis?
+
+**Edge detection** methods aim to find the boundaries in images. This step is vital in various computer vision tasks, such as object recognition, where edge pixels help define shape and texture. An edge is a location where we have a rapid change of image intensity. 
+
+### Types of Edges in Images
+
+Modern edge detection methods are sensitive to various types of image edges:
+
+- **Step Edges**: Rapid intensity changes in the image.
+- **Ramp Edges**: Gradual intensity transitions.
+- **Roof Edges**: Unidirectional edges associated with a uniform image region.
+
+### Sobel Edge Detection Algorithm
+
+The Sobel operator is one of the most popular edge detection methods. It calculates the gradient of the image intensity by convolving the image with small[ square `3x3` convolution kernels][4]. One for detecting the x-gradient and the other for the y-gradient.
+
+These kernels are:
+
+#### $G_x$
+
+$$
+G_x = 
+\begin{bmatrix}
++1 & 0 & -1 \\
++2 & 0 & -2 \\
++1 & 0 & -1
+\end{bmatrix}
+$$
+
+#### $G_y$
+
+$$
+G_y = 
+\begin{bmatrix}
++1 & +2 & +1 \\
+0 & 0 & 0 \\
+-1 & -2 & -1
+\end{bmatrix}
+$$
+
+The magnitude $G$ and direction $\theta$ of the gradient are then calculated as:
+
+$$
+G = \sqrt{G_x^2 + G_y^2}
+$$
+
+$$
+\theta = \arctan\left(\frac{G_y}{G_x}\right)
+$$
+
+The calculated $G$ and $\theta$ are used to detect edges.
+
+### Canny Edge Detection
+
+The Canny edge detector is a multi-step algorithm which can be outlined as follows:
+
+1. **Noise Reduction**: Apply a Gaussian filter to smooth out the image.
+2. **Gradient Calculation**: Use the Sobel operator to find the intensity gradients.
+3. **Non-Maximum Suppression**: Thins down the edges to one-pixel width to ensure the detection of only the most distinct edges.
+4. **Double Thresholding**: To identify "weak" and "strong" edges, pixels are categorized based on their gradient values.
+5. **Edge Tracking by Hysteresis**: This step defines the final set of edges by analyzing pixel gradient strengths and connectivity.
+
+### Implementations in Python
+
+Here is the Python code:
+
+#### Using Canny Edge Detection from OpenCV
+
+```python
+import cv2
+
+# Load the image in grayscale
+img = cv2.imread('image.jpg', 0)
+
+# Apply Canny edge detector
+edges = cv2.Canny(img, 100, 200)
+
+# Display the original and edge-detected images
+cv2.imshow('Original Image', img)
+cv2.imshow('Edges', edges)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+#### Using Sobel Operator from OpenCV
+
+```python
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+
+# Load the image in grayscale
+img = cv2.imread('image.jpg', 0)
+
+# Compute both G_x and G_y using the Sobel operator
+G_x = cv2.Sobel(img, cv2.CV_64F, 1, 0, ksize=3)
+G_y = cv2.Sobel(img, cv2.CV_64F, 0, 1, ksize=3)
+
+# Compute the gradient magnitude and direction
+magnitude, direction = cv2.cartToPolar(G_x, G_y)
+
+# Display the results
+plt.subplot(121), plt.imshow(magnitude, cmap='gray')
+plt.title('Gradient Magnitude'), plt.xticks([]), plt.yticks([])
+plt.subplot(122), plt.imshow(direction, cmap='gray')
+plt.title('Gradient Direction'), plt.xticks([]), plt.yticks([])
+plt.show()
+```
+<br>
+
 
 
 
