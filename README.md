@@ -324,7 +324,7 @@ $\text{IoU} = \frac{\text{Area of Overlap}}{\text{Area of Union}} $
 ### Summary
 
 - **Non-Maximum Suppression (NMS):** A technique used in object detection to remove redundant bounding boxes and retain the most accurate ones.
-- **Intersection over Union (IoU):** A metric to measure the overlap between two bounding boxes, helping to evaluate the performance of object detection models.
+- **Intersection over Union (IoU):** A metric to measure the overlap between two bounding boxes, helping to evaluate the performance of object detection models. [source](https://www.youtube.com/watch?v=mS_csnzZJ-o)
 
 
 
