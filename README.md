@@ -46,10 +46,14 @@ While human vision relies on the brain to process visual inputs, computer vision
 - **Raw Data Feed**: From camera/eyes: approximately $10^7$ to $10^9$ Bytes per second.
 - **Edge and Feature Extraction**: Data reduced to around $10^3$ to $10^4$ Bytes per second after processing edges and salient features.
 - **High-Level Scene Interpretation**: Further reduced to about $10$ to $10^2$ Bytes per second.
+<br>
+## 2. Why is the Visible Light Spectrum VIBGYOR, but Color Representation is RGB?
+The human eye perceives colors using cells called **rods** and **cones**. 
 
-
-
-## 2. How to rotate an image by an arbitrary angle ?
+- **Rods** detect the **intensity** of light.
+- **Cones** are responsible for detecting **colors**. The eye has **three types of cones**, each sensitive to different wavelengths of light: **Red**, **Green**, and **Blue**. These peaks in sensitivity correspond to the RGB color model used in digital displays and imaging.
+<br>
+## 3. How to rotate an image by an arbitrary angle ?
 
 Rotating an image involves transforming the coordinates of each pixel using a rotation matrix. This mathematical operation allows us to reposition pixels and achieve a rotated version of the image.
 ### Mathematical Explanation
@@ -178,8 +182,8 @@ if __name__ == "__main__":
     plt.show()
 
 ```
-
-## 3. How does _edge detection_ work in image analysis?
+<br>
+## 4. How does _edge detection_ work in image analysis?
 
 **Edge detection** methods aim to find the boundaries in images. This step is vital in various computer vision tasks, such as object recognition, where edge pixels help define shape and texture. An edge is a location where we have a rapid change of image intensity. 
 
@@ -289,7 +293,7 @@ plt.show()
 ```
 <br>
 
-## 4. What is Non-Maximum Suppression (NMS) and Intersection over Union (IoU)?
+## 5. What is Non-Maximum Suppression (NMS) and Intersection over Union (IoU)?
 
 ### Non-Maximum Suppression (NMS)
 
@@ -325,6 +329,42 @@ $\text{IoU} = \frac{\text{Area of Overlap}}{\text{Area of Union}} $
 
 - **Non-Maximum Suppression (NMS):** A technique used in object detection to remove redundant bounding boxes and retain the most accurate ones.
 - **Intersection over Union (IoU):** A metric to measure the overlap between two bounding boxes, helping to evaluate the performance of object detection models. [source](https://www.youtube.com/watch?v=mS_csnzZJ-o)
+<br>
+
+### 6. Common Image Preprocessing Steps in a Computer Vision Pipeline
+
+Image preprocessing involves optimizing images for tasks like classification, object detection, and segmentation. Below are the common steps:
+
+| **Step**                     | **Description**                                                                                     | **Techniques**                                                                                           |
+|------------------------------|-----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| **Image Acquisition**        | Capturing high-quality images from sources like cameras or databases.                               | -                                                                                                        |
+| **Image Normalization**      | Standardizing image properties (e.g., scale, orientation, color).                                    | Resizing, mean subtraction, scaling.                                                                     |
+| **Noise Reduction**          | Minimizing noise or distortions that affect interpretation.                                          | Gaussian blur, median filtering.                                                                         |
+| **Image Enhancement**        | Improving image quality to aid in feature extraction.                                                | Contrast adjustment, sharpening, Histogram Equalization (e.g., CLAHE).                                   |
+| **Image Segmentation**       | Dividing images into meaningful segments.                                                           | Thresholding, Watershed, Region-based methods.                                                           |
+| **Feature Extraction**       | Identifying key features or patterns in an image.                                                   | Edge detection, SIFT, SURF, ORB.                                                                         |
+| **Feature Selection**        | Selecting the most relevant features to improve model performance.                                   | Principal Component Analysis (PCA), Feature importance ranking.                                          |
+| **Dimensionality Reduction** | Reducing the number of features to simplify the model and reduce computational costs.                | PCA, t-SNE, UMAP.                                                                                        |
+| **Image Compression**        | Reducing image size to decrease storage and processing overhead.                                     | JPEG, PNG, Run-length encoding.                                                                          |
+| **Contrast Adjustment**      | Enhancing or normalizing the contrast to highlight features.                                         | Histogram Equalization, CLAHE.                                                                           |
+| **ROI Identification**       | Locating regions of interest (ROIs) to focus on key parts of the image.                              | Bounding boxes, sliding window techniques.                                                               |
+| **Data Augmentation**        | Enhancing training data by creating modified versions of existing images to improve model robustness. | Flipping, rotation, scaling, cropping.                                                                   |
+
+### Preprocessing for Specific Tasks
+
+| **Task**                   | **Description**                                                                                              | **Preprocessing Techniques**                                                      |
+|----------------------------|--------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
+| **Classification**         | Classifies images into predefined categories.                                                                | Center-cropping, mean subtraction, PCA color augmentation.                        |
+| **Object Detection**       | Identifies and locates objects within an image.                                                              | Resizing to anchor boxes, data augmentation.                                      |
+| **Semantic Segmentation**  | Assigns pixels to categories for entire image segmentation.                                                  | Image resizing to match the model's input size, reprojection of results.           |
+| **Instance Segmentation**  | Identifies and categorizes each object instance, locating pixels related to each object separately.           | Scaling, padding to match network input size.                                      |
+| **Panoptic Segmentation**  | Combines both instance and semantic segmentation, labeling each pixel as either part of a thing (object) or stuff (background). | Image normalization, resizing, multi-scale processing, combining instance and semantic masks. |
+
+
+<br>
+
+
+
 
 
 
