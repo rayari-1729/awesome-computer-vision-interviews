@@ -331,7 +331,15 @@ $\text{IoU} = \frac{\text{Area of Overlap}}{\text{Area of Union}} $
 - **Intersection over Union (IoU):** A metric to measure the overlap between two bounding boxes, helping to evaluate the performance of object detection models. [source](https://www.youtube.com/watch?v=mS_csnzZJ-o)
 <br>
 
-### 6. Common Image Preprocessing Steps in a Computer Vision Pipeline
+### 6. Why is Smooth L1 loss less sensitive to outliers than L2 loss?
+If the deviation of predicted output from ground truth is very high, squaring the difference explodes the gradient. This can happen in $L_2$ loss and is mitigated in the Smooth $L_1$ loss.
+$L_{\text{Smooth L1}}(x) = \begin{cases} \frac{1}{2} x^2, & \text{if } |x| < \delta \\ \delta \left( |x| - \frac{1}{2} \delta \right), & \text{otherwise}
+\end{cases}$
+
+​
+
+
+### 7. Common Image Preprocessing Steps in a Computer Vision Pipeline
 
 Image preprocessing involves optimizing images for tasks like classification, object detection, and segmentation. Below are the common steps:
 
