@@ -371,6 +371,49 @@ Image preprocessing involves optimizing images for tasks like classification, ob
 
 <br>
 
+### 8. Evaluation metrics in Semantic, Intance and Panoptic segmentation.
+
+#### Semantic Segmentation
+
+**Definition:** Assigning a class label to every pixel in an image, without distinguishing between object instances.
+
+##### Metrics Used:
+
+| Metric                                | What is it?                                                                                     | Why we use it?                                                                                                                                                           |
+|---------------------------------------|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Mean Intersection over Union (mIoU)** | The average overlap between the predicted segmentation and the ground truth across all classes. | To evaluate how well the model correctly predicts the pixels for each class, considering both false positives and false negatives. It is the standard metric for semantic segmentation. |
+| **Pixel Accuracy**                     | The ratio of correctly classified pixels to the total number of pixels.                         | To measure the overall effectiveness of the model in correctly labeling pixels, regardless of class imbalance.                                                            |
+| **Mean Pixel Accuracy**                | The average of pixel accuracies calculated for each class separately.                           | To account for class imbalance by giving equal weight to each class when computing accuracy.                                                                              |
+| **Frequency Weighted IoU (FWIoU)**     | An IoU metric weighted by the frequency of each class in the dataset.                           | To give more importance to classes that appear more frequently, providing a balance between mIoU and pixel accuracy.                                                      |
+| **Dice Coefficient (F1 Score)**        | Measures the harmonic mean of precision and recall for segmentation tasks.                      | To evaluate the overlap between the predicted segmentation and ground truth, especially useful when classes are imbalanced.                                               |
+
+#### Instance Segmentation
+
+**Definition:** Assigning a class label and instance ID to every pixel, distinguishing between individual object instances.
+
+##### Metrics Used:
+
+| Metric                                | What is it?                                                                                         | Why we use it?                                                                                                                                                                               |
+|---------------------------------------|-----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Average Precision (AP)**            | Measures precision-recall trade-off for object instances at various IoU thresholds.                 | To evaluate how well the model detects and segments individual instances, considering both localization (through IoU) and classification accuracy.                                           |
+| **Mean Average Precision (mAP)**      | The mean of AP across all classes and IoU thresholds.                                               | To provide an overall performance metric that accounts for the model's ability to detect and segment instances across different classes and detection thresholds.                             |
+| **Average Recall (AR)**               | The average of maximum recall given a fixed number of detections per image.                         | To measure the model's ability to find all relevant instances, considering a limited number of predictions, which is important for practical applications with constraints.                  |
+| **Segmentation Quality (Mask IoU)**   | The IoU between predicted and ground truth masks for matched instances.                             | To assess the accuracy of the predicted segmentation masks, focusing on the quality of instance mask predictions.                                                                             |
+
+#### Panoptic Segmentation
+
+**Definition:** A unified task that combines semantic and instance segmentation by assigning a semantic label and instance ID to every pixel.
+
+##### Metrics Used:
+
+| Metric                                | What is it?                                                                                         | Why we use it?                                                                                                                                                                             |
+|---------------------------------------|-----------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Panoptic Quality (PQ)**             | Combines recognition and segmentation quality into a single metric.                                 | To evaluate both the detection (which instances are present) and the segmentation quality (how well they are segmented) in a unified manner, reflecting the goals of panoptic segmentation. |
+| **Recognition Quality (RQ)**          | The F1 score of detection; calculates how well instances are recognized regardless of segmentation. | To measure the accuracy of instance detection, considering both false positives and false negatives.                                                                                       |
+| **Segmentation Quality (SQ)**         | The average IoU of matched segments.                                                                | To evaluate the quality of the segmentation masks for the correctly detected instances.                                                                                                    |
+| **PQ for Things and Stuff**           | PQ calculated separately for countable objects (things) and amorphous regions (stuff).              | To provide detailed insights into model performance on different types of classes, as panoptic segmentation includes both object instances and background classes.                         |
+
+</br>
 
 
 
