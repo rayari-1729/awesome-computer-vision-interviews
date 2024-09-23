@@ -182,7 +182,8 @@ if __name__ == "__main__":
     plt.show()
 
 ```
-<br>
+</br>
+
 ## 4. How does _edge detection_ work in image analysis?
 
 **Edge detection** methods aim to find the boundaries in images. This step is vital in various computer vision tasks, such as object recognition, where edge pixels help define shape and texture. An edge is a location where we have a rapid change of image intensity. 
